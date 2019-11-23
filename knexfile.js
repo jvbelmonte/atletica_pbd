@@ -1,3 +1,4 @@
+require('dotenv').config({path: './.env'});
 const development = {
     client: 'mysql',
     connection: {
@@ -5,9 +6,15 @@ const development = {
       database: process.env.DATABASE_SCHEMA,
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASS
+    },
+    migrations:{
+      directory: './database/migrations'
+    },
+    seeds:{
+      directory: './database/seeds'
     }
   }
-  
+
   const staging = {
     client: 'mysql',
     connection: {
@@ -16,7 +23,7 @@ const development = {
       password: '123'
     }
   }
-  
+
   const production = {
     client: 'mysql',
     connection: {
@@ -25,10 +32,9 @@ const development = {
       password: '123'
     }
   }
-  
+
   module.exports = {
     development,
     staging,
     production
   }
-  
