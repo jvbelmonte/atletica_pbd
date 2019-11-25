@@ -72,11 +72,6 @@ typings/
 # Serverless directories
 .serverless
 
-# Tmp folder
-res/tmp
-uploads
-src/constants.js
-
 \.vscode/
 
 public/
