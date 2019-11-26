@@ -8,7 +8,7 @@ class TimesController{
             const query = knex.select('Esportes.descricao as esporte_descricao',
             'Times.descricao').from('Times').join('Esportes', {'Times.cod_esporte' : 'Esportes.cod_esporte'})
 
-            query.then( (Times, Esportes) => { res.json( { Times, Esportes}); }); 
+            query.then( (Times) => { res.json(Times); }); 
         }catch(err){next(NotFound('Element does not exists'))}    
     }
     async insertTimes (req, res, next){
@@ -27,6 +27,8 @@ class TimesController{
         }
         req.app.locals.res.sucess.json(res, 'post', query) 
     }
+
+
     async deleteTimes (req, res, next){
         const cod_time = req.body.cod_time
         
@@ -36,6 +38,8 @@ class TimesController{
         }
         req.app.locals.res.sucess.json(res,'delete', query)
     }
+
+    
     async updateTimes (req, res, next){
         const cod_time = req.body.cod_time
         const descricao = req.body

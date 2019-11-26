@@ -7,7 +7,7 @@ class TorneiosController{
         try{
             const query = knex.select('Esportes.descricao as esporte_descricao', 'Torneios.descricao', 'local_torneio', 'data_inicio', 'data_fim', 'taxa_inscricao', 'status_taxa').from('Torneios').join('Esportes', {'Torneios.cod_esporte' : 'Esportes.cod_esporte'})
 
-            query.then( (Torneios, Esportes) => { res.json( { Torneios, Esportes}); }); 
+            query.then( (Torneios) => { res.json(Torneios); }); 
         }catch(err){next(NotFound('Element does not exists'))}    
     }
     async insertTorneios (req, res, next){
