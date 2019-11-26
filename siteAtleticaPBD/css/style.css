@@ -12,14 +12,13 @@ body, html {
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url("../images/logoCapa.png");
-    
 }
 
 .caption {
     background-color: transparent;
     position: absolute;
     top: 40%;
-    right: 40%
+    
     width: 100%;
     
     color: #3D4097;
@@ -37,6 +36,15 @@ h1 {
     border-bottom-color: rgb(255, 255, 255);
     border-bottom-color: rgba(255,255,255,0.35);
     display: inline-block;
+}
+
+.text-muted {
+    color: #ABB3C0 !important;
+}
+
+.jumbotron {
+    background-color: #353535;
+    color: #F18836;
 }
 
 .bg-dark {
