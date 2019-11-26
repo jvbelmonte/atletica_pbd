@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `Bandeira`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Bandeira` (
   `cod_item` int(10) unsigned NOT NULL,
-  `cod_bandeira` int(10) unsigned NOT NULL,
+  `cod_bandeira` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tamanho` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`cod_item`),
   UNIQUE KEY `PKbandeira` (`cod_bandeira`),
   CONSTRAINT `Bandeira_ibfk_1` FOREIGN KEY (`cod_item`) REFERENCES `Itens` (`cod_item`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `Bandeira` (
 
 LOCK TABLES `Bandeira` WRITE;
 /*!40000 ALTER TABLE `Bandeira` DISABLE KEYS */;
+INSERT INTO `Bandeira` VALUES (6,1,'5m x 2m');
 /*!40000 ALTER TABLE `Bandeira` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,7 +51,7 @@ DROP TABLE IF EXISTS `Bola`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Bola` (
   `cod_item` int(10) unsigned NOT NULL,
-  `cod_bola` int(10) unsigned NOT NULL,
+  `cod_bola` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `marca` varchar(20) DEFAULT NULL,
   `cod_esporte` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`cod_item`),
@@ -58,7 +59,7 @@ CREATE TABLE `Bola` (
   KEY `FK_Bola_codEsporte` (`cod_esporte`),
   CONSTRAINT `Bola_ibfk_1` FOREIGN KEY (`cod_item`) REFERENCES `Itens` (`cod_item`),
   CONSTRAINT `FK_Bola_codEsporte` FOREIGN KEY (`cod_esporte`) REFERENCES `Esportes` (`cod_esporte`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +81,7 @@ DROP TABLE IF EXISTS `Camisa`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Camisa` (
   `cod_item` int(10) unsigned NOT NULL,
-  `cod_camisa` int(10) unsigned NOT NULL,
+  `cod_camisa` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tipo` enum('regata','manga curta','manga longa') DEFAULT NULL,
   `tamanho` enum('PP','P','M','G','GG','EG','XG') DEFAULT NULL,
   `numero` int(10) unsigned DEFAULT NULL,
@@ -90,7 +91,7 @@ CREATE TABLE `Camisa` (
   KEY `FK_Camisa_codEsporte` (`cod_esporte`),
   CONSTRAINT `Camisa_ibfk_1` FOREIGN KEY (`cod_item`) REFERENCES `Itens` (`cod_item`),
   CONSTRAINT `FK_Camisa_codEsporte` FOREIGN KEY (`cod_esporte`) REFERENCES `Esportes` (`cod_esporte`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +100,7 @@ CREATE TABLE `Camisa` (
 
 LOCK TABLES `Camisa` WRITE;
 /*!40000 ALTER TABLE `Camisa` DISABLE KEYS */;
+INSERT INTO `Camisa` VALUES (7,1,'manga curta','GG',55,2);
 /*!40000 ALTER TABLE `Camisa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +142,7 @@ CREATE TABLE `Itens` (
   PRIMARY KEY (`cod_item`),
   UNIQUE KEY `cod_item` (`cod_item`),
   UNIQUE KEY `PKitem` (`cod_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +151,7 @@ CREATE TABLE `Itens` (
 
 LOCK TABLES `Itens` WRITE;
 /*!40000 ALTER TABLE `Itens` DISABLE KEYS */;
-INSERT INTO `Itens` VALUES (1,50,'bola'),(2,70,'bola'),(3,50,'bola');
+INSERT INTO `Itens` VALUES (1,50,'bola'),(2,70,'bola'),(3,50,'bola'),(4,25,'camisa'),(5,25,'camisa'),(6,100,'bandeira'),(7,200,'camisa');
 /*!40000 ALTER TABLE `Itens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +221,8 @@ DROP TABLE IF EXISTS `Outros`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Outros` (
   `cod_item` int(10) unsigned NOT NULL,
-  `cod_outros` int(10) unsigned NOT NULL,
+  `cod_outros` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cod_item`),
   UNIQUE KEY `PKoutros` (`cod_outros`),
   CONSTRAINT `Outros_ibfk_1` FOREIGN KEY (`cod_item`) REFERENCES `Itens` (`cod_item`)
@@ -249,7 +252,7 @@ CREATE TABLE `Times` (
   PRIMARY KEY (`cod_time`),
   KEY `FK_Times_codEsporte` (`cod_esporte`),
   CONSTRAINT `FK_Times_codEsporte` FOREIGN KEY (`cod_esporte`) REFERENCES `Esportes` (`cod_esporte`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,6 +261,7 @@ CREATE TABLE `Times` (
 
 LOCK TABLES `Times` WRITE;
 /*!40000 ALTER TABLE `Times` DISABLE KEYS */;
+INSERT INTO `Times` VALUES (1,'Time update',2),(2,'Time Volei da UFpel',4),(3,'Time futsal UFPEL',1);
 /*!40000 ALTER TABLE `Times` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +301,7 @@ DROP TABLE IF EXISTS `Torneios`;
 CREATE TABLE `Torneios` (
   `cod_torneio` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `descricao` varchar(500) DEFAULT NULL,
-  `locao_torneio` varchar(45) DEFAULT NULL,
+  `local_torneio` varchar(45) DEFAULT NULL,
   `data_inicio` date DEFAULT NULL,
   `data_fim` date DEFAULT NULL,
   `taxa_inscricao` int(10) unsigned DEFAULT NULL,
@@ -407,4 +411,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-23 13:31:30
+-- Dump completed on 2019-11-25 23:00:50
