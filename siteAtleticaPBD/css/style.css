@@ -1,0 +1,58 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+
+}
+
+.bg-parallax {
+    height: 600px; 
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../images/logoCapa.png");
+    
+}
+
+.caption {
+    background-color: transparent;
+    position: absolute;
+    top: 40%;
+    right: 40%
+    width: 100%;
+    
+    color: #3D4097;
+}
+
+.row{
+	display:flex;
+	flex-direction:row;
+}
+
+h1 {
+	font-weight: 100;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #FFFFFF;
+    border-bottom-color: rgb(255, 255, 255);
+    border-bottom-color: rgba(255,255,255,0.35);
+    display: inline-block;
+}
+
+.bg-dark {
+    background-color: #353535 !important;
+}
+
+.nav-item a{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #F18836 !important;
+}
+
+.nav-item a:hover{
+    color: #FFFFFF !important;
+}
+
+.nav-item.active a:hover{
+    color: #F18836 !important;
+}

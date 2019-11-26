@@ -1,0 +1,4 @@
+#3D4097 - roxo
+#F18836 - laranja
+#353535 - preto
+#ABB3C0 - cinza
