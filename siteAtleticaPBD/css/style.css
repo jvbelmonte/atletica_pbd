@@ -2,11 +2,12 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: Roboto, sans-serif;
-
+    padding: 0;
+    border: 0;
 }
 
 .bg-parallax {
-    height: 600px; 
+    height: 560px; 
     position: relative;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -14,22 +15,23 @@ body, html {
     background-image: url("../images/logoCapa.png");
 }
 
+.bg-fade{
+    height: 700px; 
+    position: relative;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FBD3AF), to(#3D4097));
+    background: -moz-linear-gradient(top, #FBD3AF, #3D4097);
+    filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FBD3AF', EndColorStr='#3D4097');
+}
+
 .caption {
     background-color: transparent;
     position: absolute;
     top: 40%;
-    
     width: 100%;
-    
     color: #3D4097;
 }
 
-.row{
-	display:flex;
-	flex-direction:row;
-}
-
-h1 {
+h5 {
 	font-weight: 100;
     padding-bottom: 20px;
     border-bottom: 1px solid #FFFFFF;
@@ -45,10 +47,12 @@ h1 {
 .jumbotron {
     background-color: #353535;
     color: #F18836;
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
 .bg-dark {
-    background-color: #353535 !important;
+    background-color: #353535;
 }
 
 .nav-item a{
@@ -63,4 +67,71 @@ h1 {
 
 .nav-item.active a:hover{
     color: #F18836 !important;
+}
+
+.espacamento{
+    line-height: 0.1;
+}
+
+.rodape{
+    background-color: #353535;
+    width: 100%;
+    text-align: center;
+    padding-top:20px;
+    padding-bottom:20px;
+    color: #3D4097;
+}
+
+.caption {
+    padding-left:30px;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #3D4097;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -30px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 30px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.cadastro{
+    font-weight: bold;
+    
+    color: #3D4097 !important;
+}
+
+.cadastro:hover{
+    color: #FFFFFF !important;
+    text-decoration: none;
 }
